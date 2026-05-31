@@ -5,7 +5,21 @@ from google.genai import types
 
 # 1. การตั้งค่าหน้าเพจ (คำสั่งนี้ต้องอยู่บรรทัดบนสุดเสมอ)
 st.set_page_config(page_title="AI ติวเตอร์ภาษาอังกฤษ", page_icon="🎓", layout="wide")
-
+# ==========================================
+# 🌟 ส่วนที่เพิ่มเข้ามา: แทรกโค้ด CSS เพื่อปรับแต่งกล่องข้อความ
+# ==========================================
+st.markdown("""
+<style>
+/* ค้นหากล่องข้อความของ Streamlit และบังคับกฎใหม่ */
+div[data-baseweb="textarea"] textarea {
+    resize: none !important;          /* 1. ปิดไม่ให้ผู้ใช้ลากปรับขนาดเองได้ */
+    field-sizing: content !important; /* 2. เวทมนตร์ที่ทำให้กล่องขยายความสูงเองอัตโนมัติตามบรรทัดที่พิมพ์ */
+    min-height: 120px !important;     /* 3. กำหนดความสูงเริ่มต้นให้ดูสวยงาม */
+    line-height: 1.5 !important;      /* 4. ปรับระยะห่างระหว่างบรรทัดให้อ่านง่าย */
+}
+</style>
+""", unsafe_allow_html=True)
+# ==========================================
 # แอบดึงกุญแจลับ
 SECRET_API_KEY = st.secrets["GEMINI_API_KEY"]
 
@@ -14,7 +28,6 @@ with st.sidebar:
     st.image("https://cdn-icons-png.flaticon.com/512/1903/1903162.png", width=100) # ใส่ภาพไอคอน
     st.header("เกี่ยวกับระบบ")
     st.write("ระบบนี้พัฒนาขึ้นเพื่อประเมินความสามารถทางภาษาอังกฤษ อ้างอิงตามมาตรฐาน CEFR")
-    st.info("🧠 ประมวลผลด้วยโมเดล Gemini 2.5 Flash")
 
 # 3. ส่วนหัวของเว็บ
 st.title("🎓 AI ติวเตอร์ตรวจภาษาอังกฤษ (CEFR Evaluator)")
