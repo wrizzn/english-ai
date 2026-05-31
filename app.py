@@ -30,29 +30,22 @@ SECRET_API_KEY = st.secrets["GEMINI_API_KEY"]
 # 2. สร้างแถบด้านข้าง (Sidebar)
 with st.sidebar:
     st.image("https://cdn-icons-png.flaticon.com/512/1903/1903162.png", width=100) # ใส่ภาพไอคอน
-    st.header("เกี่ยวกับระบบ")
+    st.header("เกี่ยวกับระบบ", anchor=False)
     st.write("ระบบนี้พัฒนาขึ้นเพื่อประเมินความสามารถทางภาษาอังกฤษ อ้างอิงตามมาตรฐาน CEFR")
 
 # 3. ส่วนหัวของเว็บ
-st.title("🎓 AI ติวเตอร์ตรวจภาษาอังกฤษ (CEFR Evaluator)")
+st.title("🎓 AI ติวเตอร์ตรวจภาษาอังกฤษ (CEFR Evaluator)", anchor=False)
 
-# 4. กล่องคำอธิบายแบบพับเก็บได้
-# with st.expander("📖 อ่านคำแนะนำวิธีใช้งานที่นี่"):
-#     st.markdown("""
-#     1. พิมพ์ประโยคภาษาอังกฤษของคุณลงในกล่องข้อความ
-#     2. กดปุ่ม **'ส่งให้ AI ตรวจ'**
-#     3. รอสักครู่เพื่อรับผลคะแนนและคำแนะนำ
-#     """)
 
 # 5. แบ่งหน้าจอเป็น 2 ฝั่งเพื่อจัดระเบียบ
 col_input, col_result = st.columns([1, 1]) # แบ่งซ้ายขวา สัดส่วน 1:1
 
 with col_input:
-    st.subheader("พิมพ์ประโยคภาษาอังกฤษของคุณที่นี่")
+    st.subheader("พิมพ์ประโยคภาษาอังกฤษของคุณที่นี่", anchor=False)
     student_text = st.chat_input("พิมพ์ประโยคของคุณที่นี่...")
 
 with col_result:
-    st.subheader("ผลการประเมิน")
+    st.subheader("ผลการประเมิน", anchor=False)
     if student_text:
         with st.spinner('AI กำลังวิเคราะห์โครงสร้างประโยค...'):
             try:
